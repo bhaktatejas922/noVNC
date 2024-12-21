@@ -169,7 +169,7 @@
                         <label for="noVNC_setting_resize">Scaling Mode:</label>
                         <select id="noVNC_setting_resize" name="vncResize">
                             <option value="off">None</option>
-                            <option value="scale">Local Scaling</option>
+                            <option value="scale" selected="selected">Local Scaling</option>
                             <option value="remote">Remote Resizing</option>
                         </select>
                     </li>
@@ -338,5 +338,17 @@
         <source src="app/sounds/bell.oga" type="audio/ogg">
         <source src="app/sounds/bell.mp3" type="audio/mpeg">
     </audio>
+
+    <script>
+        // Set default scaling mode when UI is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const resizeSelect = document.getElementById('noVNC_setting_resize');
+            if (resizeSelect) {
+                resizeSelect.value = 'scale';
+                // Trigger change event to ensure UI updates
+                resizeSelect.dispatchEvent(new Event('change'));
+            }
+        });
+    </script>
  </body>
 </html>
